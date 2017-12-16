@@ -14,7 +14,7 @@ import guiTeacher.components.*;
 import guiTeacher.interfaces.KeyedComponent;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
-import playground.Orange;
+import playground.Fruits;
 
 public class Sampler extends GUIApplication {
 
@@ -120,7 +120,7 @@ public class Sampler extends GUIApplication {
 				}
 			}); 
 			viewObjects.add(cb);
-			viewObjects.add(new Orange());
+			viewObjects.add(new Fruits());
 			
 		}
 		
