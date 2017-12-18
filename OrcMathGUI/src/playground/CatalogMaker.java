@@ -1,19 +1,24 @@
 package playground;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class CatalogMaker {
 	
 	ArrayList <Fruits> list;
 	
+	Scanner in = new Scanner(System.in);
+	
 	public CatalogMaker() {
 		list = new ArrayList<Fruits>();
-		list.add(new Fruits("Apples",0.99,20,"resources/apples.png"));
-		list.add(new Fruits("Oranges",0.99,20,"resources/oranges.png"));
+		list.add(new Fruits("Apples",1.99,10));
+		list.add(new Fruits("Oranges",1.99,10));
 	}
 	
 	public static void main(String[] args) {
-		
+		CatalogMaker maker = new CatalogMaker();
+		maker.addFruits();
+		System.out.println(maker.getCSVFile());
 	}
 
 	public String getCSVFile() {
@@ -24,4 +29,46 @@ public class CatalogMaker {
 		return data;
 	}
 	
+	public void addFruits() {
+		System.out.println("Enter a fruit");
+		String name = in.nextLine();
+		System.out.println("Enter a price");
+		String doubles = in.nextLine();
+		System.out.println("Enter the quantity");
+		String integer = in.nextLine();
+		if(doubleOrNot(doubles) && numberOrNot(integer)) {
+			System.out.println(name + ", " +doubles + ", " +integer);
+		}
+		else {
+			System.out.println("Enter a valid name (String), price (double), and a quantity (int)");
+		}
+	}
+	
+	public boolean numberOrNot(String input){
+	    try
+	    {
+	        Integer.parseInt(input);
+	    }
+	    catch(NumberFormatException ex)
+	    {
+	        return false;
+	    }
+	    return true;
+	}
+	
+	public boolean doubleOrNot(String input){
+	    try
+	    {
+	        Double.parseDouble(input);
+	    }
+	    catch(NumberFormatException ex)
+	    {
+	        return false;
+	    }
+	    return true;
+	}
+	
+	//public boolean stringOrNot(String input) {
+	//	if input.equals((String) input)
+	//}
 }

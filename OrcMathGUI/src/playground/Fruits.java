@@ -11,17 +11,14 @@ public class Fruits extends AnimatedComponent {
 	private String name;
 	private double price;
 	private int quantity;
-	private String imgAddress;
 	
-	
-	public Fruits(String name, double price, int quantity, String imgAddress) {
+	public Fruits(String name, double price, int quantity) {
 		
 		super(0, 100, 64, 64);
 		
 		this.name = name;
 		this.price = price;
 		this.quantity = quantity;
-		this.imgAddress = imgAddress;
 		
 		addSequence("resources/professor.png", 200, 0, 0, 64, 64, 9);
 		Thread animation = new Thread(this);
@@ -37,11 +34,7 @@ public class Fruits extends AnimatedComponent {
 	}
 
 	public String toString() {
-		return name + "," + price + "," + quantity;
+		return name + ", " + price + ", " + quantity;
 	}
 	
-	public static void main(String[] args) {
-		CatalogMaker maker = new CatalogMaker();
-		System.out.println(maker.getCSVFile());
-	}
 }
