@@ -36,7 +36,7 @@ public class CatalogMaker {
 		String doubles = in.nextLine();
 		System.out.println("Enter the quantity");
 		String integer = in.nextLine();
-		if(doubleOrNot(doubles) && numberOrNot(integer)) {
+		if(stringOrNot(name) && doubleOrNot(doubles) && numberOrNot(integer)) {
 			System.out.println(name + ", " +doubles + ", " +integer);
 		}
 		else {
@@ -68,7 +68,12 @@ public class CatalogMaker {
 	    return true;
 	}
 	
-	//public boolean stringOrNot(String input) {
-	//	if input.equals((String) input)
-	//}
+	public boolean stringOrNot(String input) {
+		return(input.substring(0, 1).compareTo("A")> 0);
+	}
+	
+	/*
+	 * String[] data = line.split(",");
+	 * list.add(new Fruits(data[0],data[1],data[2]
+	 */
 }
