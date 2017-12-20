@@ -12,7 +12,7 @@ public class Fruits extends AnimatedComponent {
 	private double price;
 	private int quantity;
 	
-	public Fruits(String name, double price, int quantity) {
+	public Fruits(String name, int price, int quantity) {
 		
 		super(0, 100, 64, 64);
 		
