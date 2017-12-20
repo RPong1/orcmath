@@ -15,7 +15,7 @@ public class Fruits extends AnimatedComponent {
 	public Fruits(String name, int price, int quantity) {
 		
 		super(0, 100, 64, 64);
-		
+		 
 		this.name = name;
 		this.price = price;
 		this.quantity = quantity;

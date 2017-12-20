@@ -18,7 +18,7 @@ public class CatalogMakerGUI extends GUIApplication {
 	public static void main(String[] args) {
 		CatalogMakerGUI sample = new CatalogMakerGUI(800, 550);
 		Thread go = new Thread(sample);
-		go.start();
+		go.start(); 
 	}
 
 }

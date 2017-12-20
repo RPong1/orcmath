@@ -51,7 +51,7 @@ public class CatalogMaker {
 	
 	public void addFruit(Fruits b){
 		list.add(b);
-	}
+	} 
 	
 	public void save() {
 		try{    

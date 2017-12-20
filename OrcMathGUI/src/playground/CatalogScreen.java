@@ -83,6 +83,7 @@ public class CatalogScreen extends FullFunctionScreen implements FileRequester {
 		Fruits f = new Fruits(text.getText(), Integer.parseInt(text.getText()), Integer.parseInt(text.getText()));
 		textA.setText(f.toString());
 		catalog.addFruit(f);
+		
 	}
 
 	@Override
@@ -95,6 +96,6 @@ public class CatalogScreen extends FullFunctionScreen implements FileRequester {
 	public JFrame getWindow() {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	} 
 	
 }
