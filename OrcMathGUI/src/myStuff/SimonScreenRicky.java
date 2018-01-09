@@ -56,16 +56,15 @@ public class SimonScreenRicky extends ClickableScreen implements Runnable {
 	Placeholder until partner finishes implementation of MoveInterface
 	*/
 	private MoveInterfaceRicky getMove(int bIndex) {
-		// TODO Auto-generated method stub
-	    return null;
+		return new MoveRicky((ButtonRicky) buttonI[bIndex]);
 	}
 	
 	/**
 	Placeholder until partner finishes implementation of ProgressInterface
 	*/
 	private ProgressInterfaceRicky getProgress() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ProgressRicky(300,300,100,40);
+
 	}
 
 	private void addButtons() {
@@ -107,7 +106,6 @@ public class SimonScreenRicky extends ClickableScreen implements Runnable {
 				}
 			});
 			buttonI[i] = b;
-			//
 		}
 	}
 	
@@ -115,8 +113,7 @@ public class SimonScreenRicky extends ClickableScreen implements Runnable {
 	Placeholder until partner finishes implementation of ButtonInterface
 	*/
 	private ButtonInterfaceRicky getAButton() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ButtonRicky(10,10,20,20,"",null);
 	}
 
 	@Override
