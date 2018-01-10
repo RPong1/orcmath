@@ -1,5 +1,6 @@
 package myStuff;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
@@ -7,7 +8,7 @@ import guiTeacher.components.Component;
 
 public class ProgressRicky extends Component implements ProgressInterfaceRicky {
 
-	private boolean isPlaying ;
+	private boolean isPlaying;
 	private int roundNum;
 	private int sequenceNum;
 
@@ -21,27 +22,30 @@ public class ProgressRicky extends Component implements ProgressInterfaceRicky {
 	@Override
 	public void gameOver() {
 		isPlaying = false;
-
+		update();
 	}
 
 	@Override
 	public void setRound(int i) {
 		roundNum = i;
+		update();
 	}
 
 	@Override
 	public void setSequenceSize(int i) {
 		sequenceNum = i;
+		update();
 	}
 
 	@Override
 	public void update(Graphics2D g) {
-		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-				RenderingHints.VALUE_ANTIALIAS_ON);
+		clear();
 		if(isPlaying) {
-			g.drawString(" "+roundNum, getX(), getY());
-			g.drawString(" "+sequenceNum, getX(), getY()+ 15);
+			g.setColor(Color.DARK_GRAY);
+			g.drawString("Round:  "+roundNum, getX(), getY());
+			g.drawString("Sequence: "+sequenceNum, getX(), getY()+ 15);
 		}else {
+			g.setColor(Color.DARK_GRAY);
 			g.drawString("Game over ", getX(), getY());
 		}
 

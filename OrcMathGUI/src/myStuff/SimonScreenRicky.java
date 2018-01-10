@@ -4,11 +4,17 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-import guiTeacher.components.*;
+import guiTeacher.components.Action;
+import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
 
 public class SimonScreenRicky extends ClickableScreen implements Runnable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4523343284186696742L;
 	
 	private TextLabel tl;
 	private ButtonInterfaceRicky[] buttonI;
@@ -56,14 +62,14 @@ public class SimonScreenRicky extends ClickableScreen implements Runnable {
 	Placeholder until partner finishes implementation of MoveInterface
 	*/
 	private MoveInterfaceRicky getMove(int bIndex) {
-		return new MoveRicky((ButtonRicky) buttonI[bIndex]);
+		return new MoveRicky(buttonI[bIndex]);
 	}
 	
 	/**
 	Placeholder until partner finishes implementation of ProgressInterface
 	*/
 	private ProgressInterfaceRicky getProgress() {
-		return new ProgressRicky(300,300,100,40);
+		return new ProgressRicky(0,0,100,40);
 
 	}
 
@@ -113,7 +119,7 @@ public class SimonScreenRicky extends ClickableScreen implements Runnable {
 	Placeholder until partner finishes implementation of ButtonInterface
 	*/
 	private ButtonInterfaceRicky getAButton() {
-		return new ButtonRicky(10,10,20,20,"",null);
+		return new ButtonRicky(20,20,40,40,"",null);
 	}
 
 	@Override
@@ -143,7 +149,7 @@ public class SimonScreenRicky extends ClickableScreen implements Runnable {
 			}
 			b = moveI.get(i).getButton();
 			b.highlight();
-			int sleepTime = 50000 / roundNumber;
+			int sleepTime = 1000 / roundNumber;
 			try {
 				Thread.sleep(sleepTime);
 			} 
@@ -159,7 +165,6 @@ public class SimonScreenRicky extends ClickableScreen implements Runnable {
 		try {
 			Thread.sleep(800);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		tl.setText("");
@@ -167,7 +172,6 @@ public class SimonScreenRicky extends ClickableScreen implements Runnable {
 	}
 
 	private void gameOver() {
-		// TODO Auto-generated method stub
 		
 	}
 }

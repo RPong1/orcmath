@@ -2,10 +2,10 @@ package myStuff;
 
 public class MoveRicky implements MoveInterfaceRicky {
 
-	private ButtonRicky button;
+	private ButtonInterfaceRicky button;
 
-	public MoveRicky(ButtonRicky button) {
-		this.button=button;
+	public MoveRicky(ButtonInterfaceRicky buttonI) {
+		this.button = buttonI;
 	}
 
 	@Override

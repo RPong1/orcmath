@@ -13,7 +13,7 @@ public class SimonGameRicky extends GUIApplication {
 
 	@Override
 	public void initScreen() {
-		CustomScreen screen = new CustomScreen(getWidth(), getHeight());
+		SimonScreenRicky screen = new SimonScreenRicky(getWidth(), getHeight());
 		setScreen(screen);
 
 	}

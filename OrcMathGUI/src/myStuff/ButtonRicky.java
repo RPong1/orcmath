@@ -9,9 +9,6 @@ import guiTeacher.components.Button;
 public class ButtonRicky extends Button implements ButtonInterfaceRicky {
 
 	private Color newColor;
-	private boolean highlighted;
-	private int x;
-	private int y;
 	
 	public ButtonRicky(int x, int y, int w, int h, String text, Action action) {
 		super(x, y, w, h, "", null);
