@@ -8,7 +8,7 @@ import guiTeacher.interfaces.Clickable;
 public interface ButtonInterfaceRicky extends Clickable {
 
 	void setColor(Color colors);
-	void setAction(Action action);
+	//void setAction(Action action);
 	void highlight();
 	void dim();
 	

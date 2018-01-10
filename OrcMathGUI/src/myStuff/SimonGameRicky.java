@@ -6,6 +6,11 @@ import guiTeacher.GUIApplication;
 
 public class SimonGameRicky extends GUIApplication {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5700313395181523002L;
+
 	public SimonGameRicky(int width, int height) {
 		super(width, height);
 		setVisible(true);

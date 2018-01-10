@@ -40,12 +40,11 @@ public class ProgressRicky extends Component implements ProgressInterfaceRicky {
 	@Override
 	public void update(Graphics2D g) {
 		clear();
+		g.setColor(Color.DARK_GRAY);
 		if(isPlaying) {
-			g.setColor(Color.DARK_GRAY);
 			g.drawString("Round:  "+roundNum, getX(), getY());
 			g.drawString("Sequence: "+sequenceNum, getX(), getY()+ 15);
 		}else {
-			g.setColor(Color.DARK_GRAY);
 			g.drawString("Game over ", getX(), getY());
 		}
 

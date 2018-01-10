@@ -18,7 +18,8 @@ public class SimonScreenRicky extends ClickableScreen implements Runnable {
 	
 	private TextLabel tl;
 	private ButtonInterfaceRicky[] buttonI;
-	private ProgressInterfaceRicky progressI;
+	private TextLabel progressI;
+	//private ProgressInterfaceRicky progressI;
 	private ArrayList<MoveInterfaceRicky> moveI;
 	
 	int roundNumber;
@@ -33,96 +34,6 @@ public class SimonScreenRicky extends ClickableScreen implements Runnable {
 	}
 
 	@Override
-	public void initAllObjects(List<Visible> viewObjects) {
-		addButtons();
-		for(ButtonInterfaceRicky b: buttonI){ 
-		    viewObjects.add(b); 
-		}
-		progressI = getProgress();
-		tl = new TextLabel(130,230,300,40,"Let's play Simon!");
-		moveI = new ArrayList<MoveInterfaceRicky>();
-		//add 2 moves to start
-		lastSelectedButton = -1;
-		moveI.add(randomMove());
-		moveI.add(randomMove());
-		roundNumber = 0;
-		viewObjects.add(progressI);
-		viewObjects.add(tl);
-	}
-
-	private MoveInterfaceRicky randomMove() {
-	    int bIndex = (int)(Math.random()*buttonI.length);
-	    while(bIndex == lastSelectedButton){
-	        bIndex = (int)(Math.random()*buttonI.length);
-	    }
-	    return getMove(bIndex);
-	}
-
-	/**
-	Placeholder until partner finishes implementation of MoveInterface
-	*/
-	private MoveInterfaceRicky getMove(int bIndex) {
-		return new MoveRicky(buttonI[bIndex]);
-	}
-	
-	/**
-	Placeholder until partner finishes implementation of ProgressInterface
-	*/
-	private ProgressInterfaceRicky getProgress() {
-		return new ProgressRicky(0,0,100,40);
-
-	}
-
-	private void addButtons() {
-		int numberOfButtons = 6;
-		buttonI = new ButtonInterfaceRicky[numberOfButtons];
-		Color[] colors = {Color.BLUE, Color.CYAN, Color.GREEN, Color.MAGENTA, Color.PINK, Color.RED};
-		for(int i = 0; i < numberOfButtons; i++){
-			final ButtonInterfaceRicky b = getAButton();
-			b.setColor(colors[i]);
-			b.setX(80);
-			b.setY(60);
-			b.setAction(new Action(){
-				public void act(){
-					if(acceptingInput){
-						Thread blink = new Thread(new Runnable(){
-							public void run(){
-								b.highlight();
-								try {
-									Thread.sleep(800);
-								}catch (InterruptedException e) {
-									e.printStackTrace();
-								}
-								b.dim();
-							}
-						});
-						blink.start();
-						if(b == moveI.get(sequenceIndex).getButton()){
-							sequenceIndex++;
-						}
-						else{
-							progressI.gameOver();
-						}
-						
-						if(sequenceIndex == moveI.size()){ 
-						    Thread nextRound = new Thread(SimonScreenRicky.this); 
-						    nextRound.start(); 
-						}
-					}
-				}
-			});
-			buttonI[i] = b;
-		}
-	}
-	
-	/**
-	Placeholder until partner finishes implementation of ButtonInterface
-	*/
-	private ButtonInterfaceRicky getAButton() {
-		return new ButtonRicky(20,20,40,40,"",null);
-	}
-
-	@Override
 	public void run(){
 	    tl.setText("");
 	    nextRound();
@@ -132,8 +43,9 @@ public class SimonScreenRicky extends ClickableScreen implements Runnable {
 		acceptingInput = false;
 		roundNumber++;
 		moveI.add(randomMove());
-		progressI.setRound(roundNumber);
-		progressI.setSequenceSize(moveI.size());
+		//progressI.setRound(roundNumber);
+		//progressI.setSequenceSize(moveI.size());
+		progressI.setText("Round: "+roundNumber+"  Size: "+moveI.size());
 		changeText("Simon's turn");
 		playSequence();
 		changeText("Your turn");
@@ -171,7 +83,96 @@ public class SimonScreenRicky extends ClickableScreen implements Runnable {
 		
 	}
 
-	private void gameOver() {
+	@Override
+	public void initAllObjects(List<Visible> viewObjects) {
+		addButtons();
+		for(ButtonInterfaceRicky b: buttonI){ 
+		    viewObjects.add(b); 
+		}
+		//progressI = getProgress();
+		progressI = new TextLabel(230,330,300,40,"");
+		tl = new TextLabel(130,230,300,40,"Let's play Simon!");
 		
+		moveI = new ArrayList<MoveInterfaceRicky>();
+		//add 2 moves to start
+		lastSelectedButton = -1;
+		moveI.add(randomMove());
+		moveI.add(randomMove());
+		roundNumber = 0;
+		viewObjects.add(tl);
+		viewObjects.add(progressI);
+	}
+
+	private MoveInterfaceRicky randomMove() {
+	    int bIndex = (int)(Math.random()*buttonI.length);
+	    while(bIndex == lastSelectedButton){
+	        bIndex = (int)(Math.random()*buttonI.length);
+	    }
+	    return getMove(bIndex);
+	}
+
+	/**
+	Placeholder until partner finishes implementation of MoveInterface
+	*/
+	private MoveInterfaceRicky getMove(int bIndex) {
+		return new MoveRicky(buttonI[bIndex]);
+	}
+	
+	/**
+	Placeholder until partner finishes implementation of ProgressInterface
+	*/
+	private ProgressInterfaceRicky getProgress() {
+		return new ProgressRicky(0,0,100,40);
+
+	}
+
+	private void addButtons() {
+		int numberOfButtons = 6;
+		buttonI = new ButtonInterfaceRicky[numberOfButtons];
+		Color[] colors = {Color.BLUE, Color.CYAN, Color.GREEN, Color.MAGENTA, Color.PINK, Color.RED};
+		for(int i = 0; i < numberOfButtons; i++){
+			final ButtonInterfaceRicky b = getAButton();
+			b.setColor(colors[i]);
+			b.setX(50*i+50);
+			b.setY(100);
+			b.setAction(new Action(){
+				public void act(){
+					if(acceptingInput){
+						Thread blink = new Thread(new Runnable(){
+							public void run(){
+								b.highlight();
+								try {
+									Thread.sleep(800);
+								}catch (InterruptedException e) {
+									e.printStackTrace();
+								}
+								b.dim();
+							}
+						});
+						blink.start();
+						if(b == moveI.get(sequenceIndex).getButton()){
+							sequenceIndex++;
+						}
+						else{
+							//progressI.gameOver();
+							progressI.setText("Game Over");
+						}
+						
+						if(sequenceIndex == moveI.size()){ 
+						    Thread nextRound = new Thread(SimonScreenRicky.this); 
+						    nextRound.start(); 
+						}
+					}
+				}
+			});
+			//buttonI[i] = b;
+		}
+	}
+	
+	/**
+	Placeholder until partner finishes implementation of ButtonInterface
+	*/
+	private ButtonInterfaceRicky getAButton() {
+		return new ButtonRicky(20,20,40,40,"",null);
 	}
 }
