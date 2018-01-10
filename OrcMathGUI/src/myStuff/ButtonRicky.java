@@ -25,7 +25,7 @@ public class ButtonRicky extends Button implements ButtonInterfaceRicky {
 
 	@Override
 	public void highlight() {
-		isHighlighted =true;
+		isHighlighted = true;
 		update();
 	}
 
@@ -44,7 +44,7 @@ public class ButtonRicky extends Button implements ButtonInterfaceRicky {
 			g.drawRect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
 		}
 		else {
-			this.setForeground(newColor.darker());
+			this.setColor(newColor.darker());
 			g.drawRect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
 		}
 	}

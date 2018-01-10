@@ -48,7 +48,7 @@ public class SimonScreenRicky extends ClickableScreen implements Runnable {
 		progressI.setText("Round: "+roundNumber+"  Size: "+moveI.size());
 		changeText("Simon's turn");
 		playSequence();
-		changeText("Your turn");
+		//changeText("Your turn");
 		acceptingInput = true;
 		sequenceIndex = 0;
 	}
@@ -108,6 +108,7 @@ public class SimonScreenRicky extends ClickableScreen implements Runnable {
 	    while(bIndex == lastSelectedButton){
 	        bIndex = (int)(Math.random()*buttonI.length);
 	    }
+	    lastSelectedButton = bIndex;
 	    return getMove(bIndex);
 	}
 
