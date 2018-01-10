@@ -4,8 +4,8 @@ public class MoveRicky implements MoveInterfaceRicky {
 
 	private ButtonInterfaceRicky button;
 
-	public MoveRicky(ButtonInterfaceRicky buttonI) {
-		this.button = buttonI;
+	public MoveRicky(ButtonInterfaceRicky button) {
+		this.button = button;
 	}
 
 	@Override

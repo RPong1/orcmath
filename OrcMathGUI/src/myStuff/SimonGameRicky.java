@@ -1,16 +1,16 @@
 package myStuff;
 
-import guiPlayer.CustomGUI;
-import guiPlayer.CustomScreen;
+
 import guiTeacher.GUIApplication;
 
 public class SimonGameRicky extends GUIApplication {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -5700313395181523002L;
 
+	private static SimonScreenRicky screen;
+	private static SimonGameRicky game;
+	
 	public SimonGameRicky(int width, int height) {
 		super(width, height);
 		setVisible(true);
@@ -24,8 +24,8 @@ public class SimonGameRicky extends GUIApplication {
 	}
 
 	public static void main(String[] args) {
-		SimonGameRicky r = new SimonGameRicky(800, 550);
-		Thread runner = new Thread(r);
+		game = new SimonGameRicky(800, 550);
+		Thread runner = new Thread(game);
 		runner.start();
 	}
 

@@ -1,24 +1,25 @@
 package myStuff;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 
 import guiTeacher.components.Component;
+import guiTeacher.components.TextLabel;
 
 public class ProgressRicky extends Component implements ProgressInterfaceRicky {
 
+	private TextLabel text;
+	private int rounds;
+	private int sequence;
 	private boolean isPlaying;
-	private int roundNum;
-	private int sequenceNum;
 
 	public ProgressRicky(int x, int y, int w, int h) {
 		super(x, y, w, h);
 		isPlaying = true;
-		roundNum = 1;
-		sequenceNum = 1;
 	}
-
+	
 	@Override
 	public void gameOver() {
 		isPlaying = false;
@@ -26,28 +27,34 @@ public class ProgressRicky extends Component implements ProgressInterfaceRicky {
 	}
 
 	@Override
-	public void setRound(int i) {
-		roundNum = i;
+	public void setRound(int round) {
+		this.rounds = round;
 		update();
 	}
 
 	@Override
-	public void setSequenceSize(int i) {
-		sequenceNum = i;
+	public void setSequenceSize(int size) {
+		this.sequence = size;
 		update();
 	}
 
 	@Override
 	public void update(Graphics2D g) {
-		clear();
-		g.setColor(Color.DARK_GRAY);
+		FontMetrics font = g.getFontMetrics();
+		int fontSize = 12;
+		g.setFont(new Font("Calibri", Font.PLAIN, fontSize));
 		if(isPlaying) {
-			g.drawString("Round:  "+roundNum, getX(), getY());
-			g.drawString("Sequence: "+sequenceNum, getX(), getY()+ 15);
+			g.setColor(Color.GREEN);
+			g.fillRect(0,0,100,100);
+			g.setColor(Color.BLACK);
+			g.drawString("Round:  "+rounds, getX(), getY());
+			g.drawString("Sequence: "+sequence, getX(), getY()+ 20);
 		}else {
+			g.setColor(Color.ORANGE);
+			g.fillRect(0, 0, 100, 100);
+			g.setColor(Color.BLACK);
 			g.drawString("Game over ", getX(), getY());
 		}
-
 	}
-}
 
+}

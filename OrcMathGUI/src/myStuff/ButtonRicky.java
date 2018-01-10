@@ -1,6 +1,7 @@
 package myStuff;
 
 import java.awt.Color;
+import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
@@ -9,17 +10,17 @@ import guiTeacher.components.Button;
 
 public class ButtonRicky extends Button implements ButtonInterfaceRicky {
 
-	private Color newColor;
-	private boolean isHighlighted = false;
+	private Color Color;
+	private boolean isHighlighted;
 	
 	public ButtonRicky(int x, int y, int w, int h, String text, Action action) {
-		super(x, y, w, h, "", null);
-		update();
+		super(x, y, w, h, "", action);
+		isHighlighted = false;
 	}
 
 	@Override
-	public void setColor(Color colors) {
-		this.newColor = colors;
+	public void setColor(Color color) {
+		this.Color = color;
 		update();
 	}
 
@@ -37,15 +38,13 @@ public class ButtonRicky extends Button implements ButtonInterfaceRicky {
 
 	
 	public void drawButton(Graphics2D g, boolean hover) {
-		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-				RenderingHints.VALUE_ANTIALIAS_ON);
 		if(isHighlighted) {
-			this.setColor(newColor.brighter());
-			g.drawRect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
+			g.setColor(Color.darker());
+			g.fillRect(0, 0, getWidth(), getHeight());
 		}
 		else {
-			this.setColor(newColor.darker());
-			g.drawRect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
+			g.setColor(Color);
+			g.fillRect(0, 0, getWidth(), getHeight());
 		}
 	}
 }
